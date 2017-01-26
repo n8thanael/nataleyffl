@@ -24,7 +24,7 @@ $app->get('/', function() use($app) {
   return $app['twig']->render('index.twig');
 });
 
-$app->get('/api/' function() use ($app) {
+$app->get('/api/', function() use ($app) {
     $app['monolog']->addDebug('logging output.');
 echo 'greetings planetoit<br>' . _isCurl();;
 
@@ -75,7 +75,7 @@ function _isCurl(){
   $count = Bigcommerce::getProductsCount();
   echo "<p>" . $count . "</p>";
 
-}
+});
 
 
 $app->run();
