@@ -3,6 +3,7 @@
 require('../vendor/autoload.php');
 use Bigcommerce\Api\Client as Bigcommerce;
 
+/*
 $app = new Silex\Application();
 $app['debug'] = true;
 
@@ -23,8 +24,9 @@ $app->get('/', function() use($app) {
   return $app['twig']->render('index.twig');
 });
 
-$app->run();
 
+$app->run();
+*/
 
 
 echo 'greetings planetoit<br>' . _isCurl();;
