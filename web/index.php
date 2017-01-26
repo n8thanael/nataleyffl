@@ -26,11 +26,12 @@ $app->get('/', function() use($app) {
 
 $app->get('/api/', function() use ($app) {
     $app['monolog']->addDebug('logging output.');
-echo 'greetings planetoit<br>' . _isCurl();;
 
 function _isCurl(){
     return function_exists('curl_version');
 }
+
+  echo 'greetings planetoit<br>' . _isCurl();
 
   Bigcommerce::configure(array(
       'store_url' => 'https://store-yiaomofyl1.mybigcommerce.com',
