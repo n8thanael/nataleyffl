@@ -11,8 +11,6 @@
     },
     "autoload": {
         "classmap": [
-            "nataleyffl/app/command",
-            "nataleyffl/app/controller",
             "nataleyffl/app/model"
         ],
         "psr-4": {
