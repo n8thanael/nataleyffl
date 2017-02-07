@@ -12,9 +12,9 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 
 // Register view rendering
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    // 'twig.path' => __DIR__.'/views',
+    'twig.path' => __DIR__.'/views',
     // Here I defined a new twig path to point to my project folder which has it's own views // inside - twig.path is a property of the TwigServiceProvider() class
-    'twig.path' => __DIR__.'/../nataleyffl/app/views',
+    // 'twig.path' => __DIR__.'/../nataleyffl/app/views',
 ));
 
 // Our web handlers
@@ -30,6 +30,7 @@ $app->get('/twigdisplay/{twig_page}', function(Silex\Application $app, $twig_pag
   $twigdisplay = new twigdisplay;
   return $app['twig']->render($twigdisplay->display($twig_page));  
 });
+
 
 $app->get('/api/', function() use ($app) {
     $app['monolog']->addDebug('logging output.');
