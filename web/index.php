@@ -27,7 +27,7 @@ $app->get('/', function() use($app) {
 /*
 // this will respond with a static twig page within Nataleyffl/app/views/{twig_page}
 */
-$app->get('/twigdisplay/{twig_page}', function(Silex\Application $app, $twig_page) use($app) {
+$app->get('/twigdisplay/{twig_page}', function($twig_page) use($app) {
   $twigdisplay = new twigdisplay;
   return $app['twig']->render($twigdisplay->display($twig_page));  
 });
