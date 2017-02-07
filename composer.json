@@ -8,5 +8,13 @@
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*"
+    },
+    "autoload": {
+        "classmap": [
+            "nataleyffl/app/model"
+        ],
+        "psr-4": {
+            "nataleyffl\\": "app/"
+        }
     }
 }
