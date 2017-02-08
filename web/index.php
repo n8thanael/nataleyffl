@@ -87,8 +87,10 @@ $app->get('/load', function (Request $request) use ($app) {
     return 'Invalid signed_payload.';
   }
   $redis = new Credis_Client('localhost');
-//  $key = getUserKey($data['store_hash'], $data['user']['email']);
-  $key = getUserKey($data['store_hash'], $data['n8thanael']['email']);
+
+  return var_dump($data);
+
+  $key = getUserKey($data['store_hash'], $data['user']['email']);
   $user = json_decode($redis->get($key), true);
   if (empty($user)) {
     return 'Invalid user.';
