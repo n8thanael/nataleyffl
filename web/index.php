@@ -87,7 +87,8 @@ $app->get('/load', function (Request $request) use ($app) {
     return 'Invalid signed_payload.';
   }
   $redis = new Credis_Client('localhost');
-  $key = getUserKey($data['store_hash'], $data['user']['email']);
+//  $key = getUserKey($data['store_hash'], $data['user']['email']);
+  $key = getUserKey($data['store_hash'], $data['n8thanael']['email']);
   $user = json_decode($redis->get($key), true);
   if (empty($user)) {
     return 'Invalid user.';
@@ -315,8 +316,6 @@ function getUserKey($storeHash, $email)
 /* 
  * from bigC-php-silex\index.php example
  */
-
-
 
 
 $app->run();
