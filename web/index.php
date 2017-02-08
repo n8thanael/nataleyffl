@@ -77,12 +77,8 @@ $app->get('/helloworld/', function() use ($app){
 
 
 // Load from .env file
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-
-// Load from .env file
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
+// $dotenv = new Dotenv\Dotenv(__DIR__);
+// $dotenv->load();
 
 $app->get('/load', function (Request $request) use ($app) {
 
