@@ -88,12 +88,13 @@ $app->get('/load', function (Request $request) use ($app) {
 //  $redis = new Credis_Client('localhost');
   $redis = new Predis\Client(getenv('REDIS_URL'));
 
-  $key = getUserKey($data['store_hash'], $data['n8thanael']['n8thanael@gmail.com']);
+  $key = getUserKey($data['store_hash'], $data['user']['email']);
+
   $user = json_decode($redis->get($key), true);
 
   $app['monolog']->addDebug('load');
 
-  $export =array("key" => $key,"user" => $user, "redis" => $redis->get($key));
+  $export =array("key" => $key,"user" => $user, "data" => $data, "redis" => $redis->get($key));
 
   $debug_export = var_export($export, true);
 
