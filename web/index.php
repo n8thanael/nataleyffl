@@ -69,8 +69,6 @@ $app->get('/helloworld/', function() use ($app){
 
 
 
-
-
 /* 
  * Start part 2 from bigC-php-silex\index.php example
  */
@@ -92,8 +90,15 @@ $app->get('/load', function (Request $request) use ($app) {
 
   $key = getUserKey($data['store_hash'], $data['user']['email']);
   $user = json_decode($redis->get($key), true);
+
+  $app['monolog']->addDebug('load');
+
+  $export =array("key" => $key,"user" => $user, "redis" => $redis->get($key));
+
+  $debug_export = var_export($export, true);
+
   if (empty($user)) {
-    return 'Invalid user.';
+    return 'Invalid user you fool!' . $debug_export;
   }
   return 'Welcome ' . json_encode($user);
 });
