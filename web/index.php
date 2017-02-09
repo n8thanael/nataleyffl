@@ -85,7 +85,7 @@ $app->get('/load', function (Request $request) use ($app) {
     return 'Invalid signed_payload.';
   }
 
-//  $redis = new Credis_Client('localhost');
+  //  $redis = new Credis_Client('localhost');
   $redis = new Predis\Client(getenv('REDIS_URL'));
 
   $key = getUserKey($data['store_hash'], $data['user']['email']);
@@ -94,12 +94,13 @@ $app->get('/load', function (Request $request) use ($app) {
 
   $app['monolog']->addDebug('load');
 
+  // Scary bad debug dump...
   $export =array("key" => $key,"user" => $user, "data" => $data, "redis" => $redis->get($key));
-
   $debug_export = var_export($export, true);
 
   if (empty($user)) {
-    return 'Invalid user you fool!' . $debug_export;
+  	// return  'invalid User -> redis key dumps : '' . $debug_export;
+    return 'Invalid user.';
   }
   return 'Welcome ' . json_encode($user);
 });
@@ -313,6 +314,15 @@ function callbackUrl()
 function bcAuthService()
 {
   $bcAuthService = getenv('BC_AUTH_SERVICE');
+  return $bcAuthService ?: '';
+}
+
+/**
+ * @return string Get username from the environment vars
+ */
+function bcStoreUser()
+{
+  $bcAuthService = getenv('STORE_USER');
   return $bcAuthService ?: '';
 }
 
