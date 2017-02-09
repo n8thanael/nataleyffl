@@ -88,7 +88,7 @@ $app->get('/load', function (Request $request) use ($app) {
   }
 
 //  $redis = new Credis_Client('localhost');
-  $redis = new Credis_Client(getenv('REDIS_URL'));
+  $redis = new Predis\Client(getenv('REDIS_URL'));
 
   return var_dump(getenv('REDIS_URL'));
 
@@ -104,7 +104,7 @@ $app->get('/auth/callback', function (Request $request) use ($app) {
 
 
 //  $redis = new Credis_Client('localhost');
-  $redis = new Credis_Client(getenv('REDIS_URL'));
+  $redis = new Predis\Client(getenv('REDIS_URL'));
 
   $payload = array(
     'client_id' => clientId(),
