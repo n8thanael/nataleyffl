@@ -90,7 +90,7 @@ $app->get('/load', function (Request $request) use ($app) {
 //  $redis = new Credis_Client('localhost');
   $redis = new Credis_Client(getenv('REDIS_URL'));
 
-//  return var_dump($data);
+  return var_dump(getenv('REDIS_URL'));
 
   $key = getUserKey($data['store_hash'], $data['user']['email']);
   $user = json_decode($redis->get($key), true);
