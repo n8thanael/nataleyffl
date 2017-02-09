@@ -88,7 +88,7 @@ $app->get('/load', function (Request $request) use ($app) {
 //  $redis = new Credis_Client('localhost');
   $redis = new Predis\Client(getenv('REDIS_URL'));
 
-  $key = getUserKey($data['store_hash'], $data['user']['email']);
+  $key = getUserKey($data['store_hash'], $data['n8thanael']['n8thanael@gmail.com']);
   $user = json_decode($redis->get($key), true);
 
   $app['monolog']->addDebug('load');
