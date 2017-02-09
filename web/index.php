@@ -136,7 +136,11 @@ $app->get('/auth/callback', function (Request $request) use ($app) {
     $redis->set($key, json_encode($data['user'], true));
     $redis->set("stores/{$storeHash}/auth", json_encode($data));
 
-    return 'Hello ' . json_encode($data);
+	// some more custom credential posting!  BAD!
+    $export =array("key" => $key,"user" => $user, "data" => $data, "redis" => $redis->get($key));
+  	$debug_export = var_export($export, true);
+
+    return 'Hello ' . json_encode($data) . '<p>' . $debug_export . '</p>';
   } else {
     return 'Something went wrong... [' . $resp->getStatusCode() . '] ' . $resp->getBody();
   }
