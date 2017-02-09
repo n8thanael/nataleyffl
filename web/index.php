@@ -86,7 +86,9 @@ $app->get('/load', function (Request $request) use ($app) {
   if (empty($data)) {
     return 'Invalid signed_payload.';
   }
-  $redis = new Credis_Client('localhost');
+
+//  $redis = new Credis_Client('localhost');
+  $redis = new Credis_Client(getenv('REDIS_URL'));
 
   return var_dump($data);
 
@@ -99,7 +101,10 @@ $app->get('/load', function (Request $request) use ($app) {
 });
 
 $app->get('/auth/callback', function (Request $request) use ($app) {
-  $redis = new Credis_Client('localhost');
+
+
+//  $redis = new Credis_Client('localhost');
+  $redis = new Credis_Client(getenv('REDIS_URL'));
 
   $payload = array(
     'client_id' => clientId(),

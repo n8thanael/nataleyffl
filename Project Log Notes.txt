@@ -2,3 +2,6 @@ So basically I'm going to try and post a responce back to the homepage using my 
 
 It seems I've got a short handle on what silex is doing with it's twig renderer
 I've practiced some Git Hub roll-backs as well as heroku updates and downloads ...seems to begood.
+
+Redis needs installed on Heroku --> https://devcenter.heroku.com/articles/heroku-redis
+  http://stackoverflow.com/questions/41205204/credisexception-error-apache-bigcommerce-hello-world
